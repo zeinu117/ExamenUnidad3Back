@@ -14,17 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('DatosPersonales', [controlador1::class, 'index'])->name('datos.index');
+Route::get('/', [controlador1::class, 'index'])->name('datos.index');
 
 Route::get('DatosPersonales/create', [controlador1::class, 'create'])->name('datos.create');
 
-Route::post('DatosPersonales', [controlador1::class, 'store'])->name('datos.store');
+Route::delete('DatosPersonales/{datos}', [controlador1::class,'destroy'])->name('datos.destroy');
 
-Route::get('DatosPersonales/{datos}', [controlador1::class, 'show'])->name('datos.show');
+Route::post('DatosPersonales', [controlador1::class, 'store'])->name('datos.store');
 
 Route::get('DatosPersonales/{datos}/edit', [controlador1::class, 'edit'])->name('datos.edit');
 

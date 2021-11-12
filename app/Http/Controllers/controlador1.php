@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\DatosPersonales;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class controlador1 extends Controller
 {
     public function index(){
 
-        $datos = DatosPersonales::orderBy('id', 'desc')->paginate();
-
-
-
-
+        $datos = DatosPersonales::orderBy('id', 'desc')->paginate(10);
         return view ('datos.index', compact('datos'));
     }
-
+    public function destroy(DatosPersonales $datos) {
+        $datos->delete();
+        return redirect()->route('datos.index');
+    }
     public function create(){
         return view ('datos.create');
     }
@@ -29,16 +28,11 @@ class controlador1 extends Controller
         $datos->nombre = $request->nombre;
         $datos->sexo = $request->sexo;
         $datos->fechaNacimiento = $request->fechaNacimiento;
-        $datos->email = $request->email;
 
         $datos->save();
-        return redirect()->route('datos.show', $datos->id);
+        return redirect()->route('datos.index');
     }
 
-    public function show(DatosPersonales $datos){
-
-        return view ('datos.show', compact('datos'));
-    }
     public function edit(DatosPersonales $datos){
         return view('datos.edit', compact('datos'));
 
@@ -49,9 +43,8 @@ class controlador1 extends Controller
         $datos->nombre = $request->nombre;
         $datos->sexo = $request->sexo;
         $datos->fechaNacimiento = $request->fechaNacimiento;
-        $datos->email = $request->email;
 
         $datos->save();
-        return redirect()->route('datos.show', $datos->id);
+        return redirect()->route('datos.index');
     }
 }

@@ -7,46 +7,27 @@
 
         @csrf
         @method('put')
-        <label >
-            apellidoPaterno:
-            <input type="text" name="apellidoPaterno" value="{{$datos->apellidoPaterno}}">
-        </label>
+        <label for="apellidoPaterno">Apellido Paterno:</label>
+        <input type="text" name="apellidoPaterno" class="form-control" value="{{$datos->apellidoPaterno}}">
         <br>
-        <label >
-            apellidoMaterno:
-            <input type="text" name="apellidoMaterno" value="{{$datos->apellidoMaterno}}">
-        </label>
+        <label for="apellidoMaterno">Apellido Materno:</label>
+        <input type="text" name="apellidoMaterno" class="form-control" value="{{$datos->apellidoMaterno}}">
         <br>
-        <label >
-            nombre:
-            <input type="text" name="nombre" value="{{$datos->nombre}}">
-        </label>
+        <label for="nombre">nombre:</label>
+            <input type="text" name="nombre" class="form-control" value="{{$datos->nombre}}">
         <br>
-        <label >
-            sexo:
-            <select name="sexo" id="sexo" >
-                <option value="{{$datos->sexo}}">{{$datos->sexo}}</option>
-                <option value="M">Mujer</option>
-                <option value="H">Hombre</option>
-            </select>
-        </label>
+        <label for="sexo">sexo:</label>
+        <select name="sexo" id="sexo" class="form-control">
+            <option value="{{$datos->sexo}}">{{$datos->sexo}}</option>
+            <option value="Mujer">Mujer</option>
+            <option value="Hombre">Hombre</option>
+        </select>
         <br>
-        <label >
-            fechaNacimiento:
-            <input type="date" name="fechaNacimiento" value="{{$datos->fechaNacimiento}}">
-        </label>
+        <label for="fechaNacimiento">fecha de Nacimiento:</label>
+        <input type="date" name="fechaNacimiento" class="form-control" value="{{$datos->fechaNacimiento}}">
         <br>
-        <label >
-            email:
-            <input type="email" name="email" value="{{$datos->email}}">
-        </label>
-        <br>
-
-        <button type="submit">Actualizar formulario</button>
-
-
-
-
+        <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i>  Actualizar formulario</button>
+        <a href="{{route('datos.index')}}" class="btn btn-danger"><i class="fas fa-window-close"></i>  cancelar</a>
     </form>
 
 
