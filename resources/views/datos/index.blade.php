@@ -3,6 +3,10 @@
 @section('contenido')
     <h1 class="text-center">Bienvenidos a la pagina principal datos personales</h1>
     <li class="list-group-item">
+        <br>
+
+        <a href="{{route('datos.create', $datos)}}"><button class="btn btn-primary"><i class="fas fa-user-plus"></i></button></a>
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -13,7 +17,6 @@
                     <th scope="col">fecha de Nacimiento</th>
                     <th scope="col">Sexo</th>
                     <th scope="col">Edad</th>
-                    <th scope="col">Agregar</th>
                     <th scope="col">Eliminar</th>
                     <th scope="col">Actualizar</th>
                 </tr>
@@ -33,9 +36,6 @@
                         $edad = $hoy->diff($fecha_nacimiento);
                         echo $edad->y;
                         ?>
-                    </th>
-                    <th>
-                    <a href="{{route('datos.create', $dato)}}"><button class="btn btn-primary"><i class="fas fa-user-plus"></i></button></a>
                     </th>
                     <form action="{{route('datos.destroy', $dato)}}" method="POST">
                         @csrf
